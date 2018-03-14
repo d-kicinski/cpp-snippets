@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/build",
+  "command": "/usr/bin/c++    -g   -std=c++1z -o CMakeFiles/out.dir/app/src/main.cpp.o -c /home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/app/src/main.cpp",
+  "file": "/home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/app/src/main.cpp"
+}
+]

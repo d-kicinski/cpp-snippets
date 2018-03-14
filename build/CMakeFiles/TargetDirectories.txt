@@ -1,0 +1,4 @@
+/home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/build/CMakeFiles/rebuild_cache.dir
+/home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/build/CMakeFiles/edit_cache.dir
+/home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/build/CMakeFiles/out.dir
+/home/dave/code/cpp/Cpp17-STL--Cookbook-Snippets/build/CMakeFiles/run.dir
