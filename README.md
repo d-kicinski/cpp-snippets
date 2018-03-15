@@ -10,6 +10,6 @@
       
 ## Resources
 * [Blog](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/) - the right way of doing CMakes
-* [GitHub](https://github.com/catchorg/Catch2) - testing framework in this project
+* [GitHub](https://github.com/catchorg/Catch2) - testing framework used in this project
 
    
