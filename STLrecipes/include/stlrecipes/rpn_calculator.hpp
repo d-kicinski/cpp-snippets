@@ -1,4 +1,8 @@
-// include a lot of moder helpers from STL
+#ifndef RPN_CALCULATOR_H
+#define RPN_CALCULATOR_H
+
+
+// include a lot of helpers from STL
 #include <iostream>
 #include <stack>
 #include <iterator>
@@ -9,7 +13,8 @@
 #include <stdexcept>
 #include <cmath>
 
-using namespace std;  // i know i shouldn't but don't want to type it that often here
+
+namespace stlrecipes{
 
 /**
  *  \brief RPN parser
@@ -26,7 +31,7 @@ float evaluate_rpn(IT it, IT end)
 
   // While we iterate though the token we need  to memorize all operand on the
   // way until we see an operation, stack should be perfect
-  stack<float> val_stack;
+  std::stack<float> val_stack;
 
   // Helper to make pop operation return popped element
   auto pop_stack ([&]() {
@@ -36,18 +41,18 @@ float evaluate_rpn(IT it, IT end)
   });
 
   // To each supprted operations we assain callable lamda taking two argumant
-  map<string, float (*)(float, float)> ops {
+  std::map<std::string, float (*)(float, float)> ops {
     {"+", [](float a, float b) {return a + b; }},
     {"-", [](float a, float b) {return a - b; }},
     {"*", [](float a, float b) {return a * b; }},
     {"/", [](float a, float b) {return a / b; }},
-    {"^", [](float a, float b) {return pow(a, b); }},
-    {"%", [](float a, float b) {return fmod(a, b); }},
+    {"^", [](float a, float b) {return std::pow(a, b); }},
+    {"%", [](float a, float b) {return std::fmod(a, b); }},
   };
 
   for (; it != end; ++it) {
     // string stream can be treated as string parser here
-    stringstream ss {*it};
+    std::istringstream ss {*it};
 
     if(float val; ss >> val) {
       // succesfully parsed token to float so it's should be operand
@@ -62,22 +67,15 @@ float evaluate_rpn(IT it, IT end)
         const auto & op (ops.at(*it));
         const float result {op(l, r)};
         val_stack.push(result);
-      } catch(const out_of_range &) {
+      } catch(const std::out_of_range &) {
         // out_of_range exception means .at(string op) didn't find supported opertion
-        throw invalid_argument(*it);
+        throw std::invalid_argument(*it);
       }
     }
   }
 
   return val_stack.top();
 }
-
-int main()
-{
-  try {
-    cout << evaluate_rpn(istream_iterator<string>{cin}, {})
-         << '\n';
-  } catch (const invalid_argument &e) {
-    cout << "Invalid operator: " << e.what() << '\n';
-  }
 }
+
+#endif /* RPN_CALCULATOR_H */
