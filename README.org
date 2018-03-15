@@ -1,6 +1,0 @@
-* Cpp17-STL--Cookbook-Snippets
-** About
-Repository contains implementations  of examples programs which purpose is to present new cpp17 features. All examples available in Cpp 17 STL Cookbook.
-
-** Content
-   1. Simple reverse polish notation calculator
