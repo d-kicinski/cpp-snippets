@@ -1,19 +1,26 @@
-#include <stlrecipes/rpn_calculator.hpp>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <iomanip>
 
 #include <iostream>
-#include <iterator>
-#include <sstream>
 
+#include <stlrecipes/vector_utils.hpp>
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
+  vector<int> v {1, 2, 3, 2, 5, 2, 6, 2, 4, 8};
+  //const auto new_end {remove(begin(v), end(v), 2)};
+  // v.erase(new_end, end(v));
 
-  std::string equation {"2 2 +"};
-  std::istringstream str(equation);
+  for (auto i : v) {
+    cout << i << ", ";
+  }
+  cout << '\n';
 
-  auto const result = stlrecipes::evaluate_rpn(std::istream_iterator<std::string>{std::cin}, {});
+  // now remove all 2's from vector
 
-  std::cout << result << "\n";
-  return 0;
+
 }
-

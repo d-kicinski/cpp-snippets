@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 project(libstlrecipes VERSION 1.0.0 LANGUAGES CXX)
-enable_testing()
 
 list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -17,6 +16,7 @@ list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake)
 add_library(stlrecipes
     #include/stlrecipes/rpn_calculator.hpp
     src/rpn_calculator.cpp
+    src/vector_utils.cpp
 )
 
 #Add an alias so that library can be used inside the build tree, e.g. when testing
