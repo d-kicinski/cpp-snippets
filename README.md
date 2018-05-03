@@ -1,11 +1,11 @@
 ## About
-  Repository is mainly based on snippets/recipes presented in "C++17
+  Repository is created just to refresh my knowledge of Modern C++. It is mainly based on snippets/recipes presented in "C++17
   STL Cookbook" by Jacek Galowicz. I've just put them into one library and added
   some tests but i hope we'll go furher than that. Btw definitely check links in
   Resoures section.
 
 ## Content
-   NOTE: Repo is under heavy development expect more examples in near future.
+   NOTE: Repo is not under heavy development but expect more examples in near future.
    1. Simple reverse polish notation calculator
       
 ## Resources
