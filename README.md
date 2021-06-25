@@ -1,15 +1,12 @@
 ## About
-  Repository is created just to refresh my knowledge of Modern C++. It is mainly based on snippets/recipes presented in "C++17
-  STL Cookbook" by Jacek Galowicz. I've just put them into one library and added
-  some tests but i hope we'll go furher than that. Btw definitely check links in
-  Resoures section.
+  Repository created just to refresh my knowledge of C++.
 
 ## Content
-   NOTE: Repo is not under heavy development but expect more examples in near future.
-   1. Simple reverse polish notation calculator
+  1. Simple reverse polish notation calculator
+  2. More std::vector utils
       
 ## Resources
 * [Blog](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/) - the right way of doing CMakes
 * [GitHub](https://github.com/catchorg/Catch2) - testing framework used in this project
-
+* "C++17 STL Cookbook", Jacek Galowicz. 
    

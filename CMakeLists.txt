@@ -10,8 +10,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_subdirectory(STLRecipes)
-add_subdirectory(app)
+add_subdirectory(cpp-snippets)
+#add_subdirectory(app)
 
 #add_executable(out app/main.cpp)
 #target_link_libraries(out STLrecipes)

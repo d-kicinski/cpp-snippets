@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-#include <stlrecipes/vector_utils.hpp>
+#include <snippets/vector_utils.hpp>
 
 using namespace std;
 
