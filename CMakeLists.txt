@@ -17,7 +17,7 @@ add_subdirectory(cpp-snippets)
 #target_link_libraries(out STLrecipes)
 
 add_custom_target(run
-  COMMAND app
-  COMMENT " Run binary in ${CMAKE_CURRENT_SOURCE_DIR}"
-)
+        COMMAND app
+        COMMENT " Run binary in ${CMAKE_CURRENT_SOURCE_DIR}"
+        )
 

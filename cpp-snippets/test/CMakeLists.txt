@@ -9,10 +9,10 @@ enable_testing(true)
 
 # Now simply link against gtest or gtest_main as needed. Eg
 add_executable(snippets_test
-  src/rpn_calculator_test.cpp
-  src/vector_test.cpp
-  #src/catch_test.cpp
-  )
+        src/rpn_calculator_test.cpp
+        src/vector_test.cpp
+        #src/catch_test.cpp
+        )
 
 target_compile_features(snippets_test PRIVATE cxx_auto_type)
 target_link_libraries(snippets_test Catch snippets::snippets)
