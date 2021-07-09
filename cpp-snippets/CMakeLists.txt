@@ -7,8 +7,7 @@ add_library(snippets
         src/snippets/rpn_calculator.cpp
         src/snippets/vector_utils.cpp
         src/snippets/granting_access_private_inheritance.hpp
-        src/snippets/avx2_hello.hpp
-        )
+        src/snippets/avx2_dot_product.hpp)
 add_library(snippets::snippets ALIAS snippets)
 
 target_include_directories(snippets
