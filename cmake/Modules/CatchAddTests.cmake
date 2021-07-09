@@ -22,7 +22,7 @@ function(add_command NAME)
   set(script "${script}${NAME}(${_args})\n" PARENT_SCOPE)
 endfunction()
 
-# Run test executable to get list of available tests
+# Run tests executable to get list of available tests
 if(NOT EXISTS "${TEST_EXECUTABLE}")
   message(FATAL_ERROR
     "Specified test executable '${TEST_EXECUTABLE}' does not exist"
@@ -33,7 +33,7 @@ execute_process(
   OUTPUT_VARIABLE output
   RESULT_VARIABLE result
 )
-# Catch --list-test-names-only reports the number of tests, so 0 is... surprising
+# Catch --list-tests-names-only reports the number of tests, so 0 is... surprising
 if(${result} EQUAL 0)
   message(WARNING
     "Test executable '${TEST_EXECUTABLE}' contains no tests!\n"

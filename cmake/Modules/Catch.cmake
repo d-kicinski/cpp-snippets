@@ -5,24 +5,24 @@
 Catch
 -----
 
-This module defines a function to help use the Catch test framework.
+This module defines a function to help use the Catch tests framework.
 
-The :command:`catch_discover_tests` discovers tests by asking the compiled test
+The :command:`catch_discover_tests` discovers tests by asking the compiled tests
 executable to enumerate its tests.  This does not require CMake to be re-run
 when tests change.  However, it may not work in a cross-compiling environment,
-and setting test properties is less convenient.
+and setting tests properties is less convenient.
 
 This command is intended to replace use of :command:`add_test` to register
-tests, and will create a separate CTest test for each Catch test case.  Note
+tests, and will create a separate CTest tests for each Catch tests case.  Note
 that this is in some cases less efficient, as common set-up and tear-down logic
-cannot be shared by multiple test cases executing in the same instance.
+cannot be shared by multiple tests cases executing in the same instance.
 However, it provides more fine-grained pass/fail information to CTest, which is
-usually considered as more beneficial.  By default, the CTest test name is the
+usually considered as more beneficial.  By default, the CTest tests name is the
 same as the Catch name; see also ``TEST_PREFIX`` and ``TEST_SUFFIX``.
 
 .. command:: catch_discover_tests
 
-  Automatically add tests with CTest by querying the compiled test executable
+  Automatically add tests with CTest by querying the compiled tests executable
   for available tests::
 
     catch_discover_tests(target
@@ -35,18 +35,18 @@ same as the Catch name; see also ``TEST_PREFIX`` and ``TEST_SUFFIX``.
                          [TEST_LIST var]
     )
 
-  ``catch_discover_tests`` sets up a post-build command on the test executable
-  that generates the list of tests by parsing the output from running the test
-  with the ``--list-test-names-only`` argument.  This ensures that the full
-  list of tests is obtained.  Since test discovery occurs at build time, it is
+  ``catch_discover_tests`` sets up a post-build command on the tests executable
+  that generates the list of tests by parsing the output from running the tests
+  with the ``--list-tests-names-only`` argument.  This ensures that the full
+  list of tests is obtained.  Since tests discovery occurs at build time, it is
   not necessary to re-run CMake when the list of tests changes.
   However, it requires that :prop_tgt:`CROSSCOMPILING_EMULATOR` is properly set
   in order to function in a cross-compiling environment.
 
   Additionally, setting properties on tests is somewhat less convenient, since
-  the tests are not available at CMake time.  Additional test properties may be
+  the tests are not available at CMake time.  Additional tests properties may be
   assigned to the set of tests as a whole using the ``PROPERTIES`` option.  If
-  more fine-grained test control is needed, custom content may be provided
+  more fine-grained tests control is needed, custom content may be provided
   through an external CTest script using the :prop_dir:`TEST_INCLUDE_FILES`
   directory property.  The set of discovered tests is made accessible to such a
   script via the ``<target>_TESTS`` variable.
@@ -56,28 +56,28 @@ same as the Catch name; see also ``TEST_PREFIX`` and ``TEST_SUFFIX``.
   ``target``
     Specifies the Catch executable, which must be a known CMake executable
     target.  CMake will substitute the location of the built executable when
-    running the test.
+    running the tests.
 
   ``TEST_SPEC arg1...``
-    Specifies test cases, wildcarded test cases, tags and tag expressions to
-    pass to the Catch executable with the ``--list-test-names-only`` argument.
+    Specifies tests cases, wildcarded tests cases, tags and tag expressions to
+    pass to the Catch executable with the ``--list-tests-names-only`` argument.
 
   ``EXTRA_ARGS arg1...``
-    Any extra arguments to pass on the command line to each test case.
+    Any extra arguments to pass on the command line to each tests case.
 
   ``WORKING_DIRECTORY dir``
-    Specifies the directory in which to run the discovered test cases.  If this
+    Specifies the directory in which to run the discovered tests cases.  If this
     option is not provided, the current binary directory is used.
 
   ``TEST_PREFIX prefix``
-    Specifies a ``prefix`` to be prepended to the name of each discovered test
-    case.  This can be useful when the same test executable is being used in
+    Specifies a ``prefix`` to be prepended to the name of each discovered tests
+    case.  This can be useful when the same tests executable is being used in
     multiple calls to ``catch_discover_tests()`` but with different
     ``TEST_SPEC`` or ``EXTRA_ARGS``.
 
   ``TEST_SUFFIX suffix``
     Similar to ``TEST_PREFIX`` except the ``suffix`` is appended to the name of
-    every discovered test case.  Both ``TEST_PREFIX`` and ``TEST_SUFFIX`` may
+    every discovered tests case.  Both ``TEST_PREFIX`` and ``TEST_SUFFIX`` may
     be specified.
 
   ``PROPERTIES name1 value1...``
@@ -86,7 +86,7 @@ same as the Catch name; see also ``TEST_PREFIX`` and ``TEST_SUFFIX``.
 
   ``TEST_LIST var``
     Make the list of tests available in the variable ``var``, rather than the
-    default ``<target>_TESTS``.  This can be useful when the same test
+    default ``<target>_TESTS``.  This can be useful when the same tests
     executable is being used in multiple calls to ``catch_discover_tests()``.
     Note that this variable is only available in CTest.
 
@@ -113,7 +113,7 @@ function(catch_discover_tests TARGET)
   string(SHA1 args_hash "${_TEST_SPEC} ${_EXTRA_ARGS}")
   string(SUBSTRING ${args_hash} 0 7 args_hash)
 
-  # Define rule to generate test list for aforementioned test executable
+  # Define rule to generate tests list for aforementioned tests executable
   set(ctest_include_file "${CMAKE_CURRENT_BINARY_DIR}/${TARGET}_include-${args_hash}.cmake")
   set(ctest_tests_file "${CMAKE_CURRENT_BINARY_DIR}/${TARGET}_tests-${args_hash}.cmake")
   get_property(crosscompiling_emulator

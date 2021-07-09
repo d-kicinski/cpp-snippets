@@ -33,9 +33,9 @@
 #    PARSE_CATCH_TESTS_NO_HIDDEN_TESTS (Default OFF)                                               #
 #    -- excludes tests marked with [!hide], [.] or [.foo] tags                                     #
 #    PARSE_CATCH_TESTS_ADD_FIXTURE_IN_TEST_NAME (Default ON)                                       #
-#    -- adds fixture class name to the test name                                                   #
+#    -- adds fixture class name to the tests name                                                   #
 #    PARSE_CATCH_TESTS_ADD_TARGET_IN_TEST_NAME (Default ON)                                        #
-#    -- adds cmake target name to the test name                                                    #
+#    -- adds cmake target name to the tests name                                                    #
 #    PARSE_CATCH_TESTS_ADD_TO_CONFIGURE_DEPENDS (Default OFF)                                      #
 #    -- causes CMake to rerun when file with tests changes so that new tests will be discovered    #
 #                                                                                                  #
@@ -85,7 +85,7 @@ function(ParseFile SourceFile TestTarget)
     # Remove block and fullline comments
     RemoveComments(Contents)
 
-    # Find definition of test names
+    # Find definition of tests names
     string(REGEX MATCHALL "[ \t]*(CATCH_)?(TEST_CASE_METHOD|SCENARIO|TEST_CASE)[ \t]*\\([^\)]+\\)+[ \t\n]*{+[ \t]*(//[^\n]*[Tt][Ii][Mm][Ee][Oo][Uu][Tt][ \t]*[0-9]+)*" Tests "${Contents}")
 
     if(PARSE_CATCH_TESTS_ADD_TO_CONFIGURE_DEPENDS AND Tests)
@@ -101,19 +101,19 @@ function(ParseFile SourceFile TestTarget)
         # Strip newlines
         string(REGEX REPLACE "\\\\\n|\n" "" TestName "${TestName}")
 
-        # Get test type and fixture if applicable
+        # Get tests type and fixture if applicable
         string(REGEX MATCH "(CATCH_)?(TEST_CASE_METHOD|SCENARIO|TEST_CASE)[ \t]*\\([^,^\"]*" TestTypeAndFixture "${TestName}")
         string(REGEX MATCH "(CATCH_)?(TEST_CASE_METHOD|SCENARIO|TEST_CASE)" TestType "${TestTypeAndFixture}")
         string(REPLACE "${TestType}(" "" TestFixture "${TestTypeAndFixture}")
 
-        # Get string parts of test definition
+        # Get string parts of tests definition
         string(REGEX MATCHALL "\"+([^\\^\"]|\\\\\")+\"+" TestStrings "${TestName}")
 
         # Strip wrapping quotation marks
         string(REGEX REPLACE "^\"(.*)\"$" "\\1" TestStrings "${TestStrings}")
         string(REPLACE "\";\"" ";" TestStrings "${TestStrings}")
 
-        # Validate that a test name and tags have been provided
+        # Validate that a tests name and tags have been provided
         list(LENGTH TestStrings TestStringsLength)
         if(TestStringsLength GREATER 2 OR TestStringsLength LESS 1)
             message(FATAL_ERROR "You must provide a valid test name and tags for all tests in ${SourceFile}")
@@ -137,7 +137,7 @@ function(ParseFile SourceFile TestTarget)
         if(TestStringsLength EQUAL 2)
             list(GET TestStrings 1 Tags)
             string(TOLOWER "${Tags}" Tags)
-            # remove target from labels if the test is hidden
+            # remove target from labels if the tests is hidden
             if("${Tags}" MATCHES ".*\\[!?(hide|\\.)\\].*")
                 list(REMOVE_ITEM Labels ${TestTarget})
             endif()
@@ -164,7 +164,7 @@ function(ParseFile SourceFile TestTarget)
                 PrintDebugMessage("Setting labels to ${Labels}")
             endif()
 
-            # Add the test and set its properties
+            # Add the tests and set its properties
             add_test(NAME "\"${CTestName}\"" COMMAND ${TestTarget} ${Name} ${AdditionalCatchParameters})
             set_tests_properties("\"${CTestName}\"" PROPERTIES FAIL_REGULAR_EXPRESSION "No tests ran"
                                                     LABELS "${Labels}")
