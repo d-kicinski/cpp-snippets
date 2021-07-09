@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(stl17-cookbook)
+project(snippets)
 
 enable_testing()
 
@@ -11,13 +11,3 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_subdirectory(cpp-snippets)
-#add_subdirectory(app)
-
-#add_executable(out app/main.cpp)
-#target_link_libraries(out STLrecipes)
-
-add_custom_target(run
-        COMMAND app
-        COMMENT " Run binary in ${CMAKE_CURRENT_SOURCE_DIR}"
-        )
-
