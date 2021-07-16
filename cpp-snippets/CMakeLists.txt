@@ -9,6 +9,7 @@ add_library(snippets
         src/snippets/avx2_dot_product.hpp
         src/snippets/abstract_class.hpp
         src/snippets/default_class.hpp
+        src/snippets/unique_ptr.hpp
         src/snippets/return_type.hpp
         )
 
@@ -28,6 +29,7 @@ add_executable(snippets_test
         tests/snippets/test_avx2.cpp
         tests/snippets/test_abstract_class.cpp
         tests/snippets/test_default_class.cpp
+        tests/snippets/test_unique_ptr.cpp
         tests/snippets/test_return_type.cpp
         )
 target_link_libraries(snippets_test snippets Catch2::Catch2)
