@@ -8,6 +8,7 @@ add_library(snippets
         src/snippets/granting_access_private_inheritance.hpp
         src/snippets/avx2_dot_product.hpp
         src/snippets/abstract_class.hpp
+        src/snippets/default_class.hpp
         )
 
 target_include_directories(snippets
@@ -25,6 +26,7 @@ add_executable(snippets_test
         tests/snippets/test_vector.cpp
         tests/snippets/test_avx2.cpp
         tests/snippets/test_abstract_class.cpp
+        tests/snippets/test_default_class.cpp
         )
 target_link_libraries(snippets_test snippets Catch2::Catch2)
 
