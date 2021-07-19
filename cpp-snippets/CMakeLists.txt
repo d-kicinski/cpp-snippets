@@ -11,6 +11,7 @@ add_library(snippets
         src/snippets/default_class.hpp
         src/snippets/unique_ptr.hpp
         src/snippets/return_type.hpp
+        src/snippets/ranges_basic.hpp
         )
 
 target_include_directories(snippets
@@ -21,6 +22,7 @@ target_include_directories(snippets
 
 target_compile_features(snippets PRIVATE cxx_auto_type)
 target_compile_options(snippets PRIVATE -Werror -Wall PUBLIC -mavx2)
+set_property(TARGET snippets PROPERTY CXX_STANDARD 20)
 
 add_executable(snippets_test
         tests/catch_main.cpp
@@ -31,8 +33,10 @@ add_executable(snippets_test
         tests/snippets/test_default_class.cpp
         tests/snippets/test_unique_ptr.cpp
         tests/snippets/test_return_type.cpp
+        tests/snippets/test_ranges_basic.cpp
         )
 target_link_libraries(snippets_test snippets Catch2::Catch2)
+set_property(TARGET snippets_test PROPERTY CXX_STANDARD 20)
 
 include(${CMAKE_SOURCE_DIR}/third-party/Catch2/contrib/Catch.cmake)
 enable_testing()
