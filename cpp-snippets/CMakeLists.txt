@@ -34,6 +34,7 @@ add_executable(snippets_test
         tests/snippets/test_unique_ptr.cpp
         tests/snippets/test_return_type.cpp
         tests/snippets/test_ranges_basic.cpp
+        tests/snippets/test_override.cpp
         )
 target_link_libraries(snippets_test snippets Catch2::Catch2)
 set_property(TARGET snippets_test PROPERTY CXX_STANDARD 20)
